@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Search Results -->
+
+<!-- Featured posts -->
+ <h3 class="text-warning" style="letter-spacing: 2px">Search Term : {{ query }} </h3>
+  <div class="row mb-2">
+    {% if results.exists %}
+    {% for post in results %}
+   
+    <div class="col-md-6">
+      <div class="card border-0" >
+        <div class="card-body">
+           <h3> <a href="{% url 'blogs' post.slug %}" >{{ post.title }}</a></h3>
+          <small class="mb-1 text-muted">{{ post.created_at| timesince}} ago | {{ post.author }}</small>
+          <p class="card-text">{{ post.short_description|truncatewords:20 }}  </p>
+        </div>
+      </div>
+        </div>
+    
+    {% endfor %}
+    {% else %}
+    <p>No posts available in this category.</p>
+    {% endif %}
+
+
+
+
+
+
+
+<!-- <div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h2 class="mb-4">Search Results for "{{ keyword }}"</h2>
+            {% if results %}
+                {% for post in results %}
+                    <article class="mb-4">
+                        <header class="mb-2">
+                            <h3><a href="{% url 'blogs' post.slug %}">{{ post.title }}</a></h3>
+                            <div class="text-muted fst-italic mb-1">Posted on {{ post.created_at|date:"F j, Y" }} by {{ post.author }}</div>
+                        </header>       
+                        <p>{{ post.short_description|truncatewords:30 }}</p>
+                        <a class="btn btn-primary" href="{% url 'blogs' post.slug %}">Read More &rarr;</a>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>No results found for "{{ keyword }}". Please try a different search term.</p>
+            {% endif %} 
+        </div>
+    </div>      
+</div> -->
+{% endblock %}
+
+
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
